@@ -14,9 +14,9 @@ const Post = () => {
 
   return (
     <div className="container">
-      <ul class="list-group">
+      <ul className="list-group">
         {posts.map((post) => (
-          <li key={post.id}>{post.name}</li>
+          <li className="list-group-item" key={post.id}>{post.name}</li>
         ))}
       </ul>
     </div>

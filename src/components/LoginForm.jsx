@@ -3,7 +3,7 @@ import React from "react";
 export default function LoginForm() {
   return (
     <div className="container">
-      <h2>LoginForm</h2>
+      <h2>Login Form</h2>
 
       <form>
         <div className="form-group">
