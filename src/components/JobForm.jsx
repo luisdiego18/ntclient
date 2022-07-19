@@ -1,38 +1,47 @@
 import React, { useState } from "react";
+import { addJob } from "../services/jobService";
 
 const JobForm = () => {
-  const [data, setdata] = useState({
+  const [job, setJob] = useState({
     title: "",
     description: "",
   });
 
-  const saveJob = (e) => {
-    e.preventDefault();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setJob((prev) => {
+      return { ...prev, [name]: value };
+    });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await addJob(job);
+  };
+
   return (
     <div>
       <h1>Job Form</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label for="exampleInputEmail1">Title</label>
+          <label>Title</label>
           <input
-            value={data.title}
             type="text"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            name="title"
+            onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label for="exampleInputPassword1">Description</label>
+          <label>Description</label>
           <input
-            value={data.description}
             type="text"
             className="form-control"
-            id="exampleInputPassword1"
+            name="description"
+            onChange={handleChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary" onClick={saveJob}>
+        <button type="submit" className="btn btn-primary">
           Save
         </button>
       </form>

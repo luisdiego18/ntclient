@@ -7,7 +7,7 @@ export default function LoginForm() {
 
       <form>
         <div className="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+          <label>Email address</label>
           <input
             type="email"
             className="form-control"
@@ -19,7 +19,7 @@ export default function LoginForm() {
           </small>
         </div>
         <div className="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label>Password</label>
           <input
             type="password"
             className="form-control"
@@ -32,9 +32,7 @@ export default function LoginForm() {
             className="form-check-input"
             id="exampleCheck1"
           />
-          <label className="form-check-label" for="exampleCheck1">
-            Check me out
-          </label>
+          <label className="form-check-label">Check me out</label>
         </div>
         <button type="submit" className="btn btn-primary">
           Submit

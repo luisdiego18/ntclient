@@ -15,12 +15,17 @@ export function getJob(jobId) {
   return http.get(jobUrl(jobId));
 }
 
-export function addJob() {
-  return http.post(apiEndPoint, {});
+export function addJob(job) {
+  return http.post(apiEndPoint, job);
 }
 
-export function updateJob(jobId) {
-  return http.put(jobUrl(jobId));
+export function updateJob(job) {
+  const body = { ...job };
+  delete body._id;
+  return http.put(jobUrl(job._id), {
+    title: body.title,
+    description: body.description,
+  });
 }
 
 export function deleteJob(jobId) {

@@ -4,6 +4,8 @@ import LoginForm from "./components/LoginForm";
 import Navbar from "./components/Navbar";
 import NotFound from "./components/NotFound";
 import Post from "./components/Post";
+import Jobs from "./components/Jobs";
+import JobForm from "./components/JobForm";
 import { Route, Redirect, Switch } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -16,6 +18,8 @@ const App = () => {
         <Switch>
           <Route path="/posts" component={Post} />
           <Route path="/login" component={LoginForm} />
+          <Route path="/jobs" component={Jobs} />
+          <Route path="/job-form" component={JobForm} />
           <Route path="/not-found" component={NotFound} />
           <Redirect from="/" exact to="/posts" />
           <Redirect to="/not-found" />
