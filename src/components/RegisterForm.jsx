@@ -1,48 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
+import { addUser } from "../services/userServices";
+import auth from "../services/authService";
 
-const RegisterForm = () => {
+const RegisterForm = ({ history }) => {
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await addUser(user);
+    auth.loginWithJwt(response.headers["x-auth-token"]);
+    window.location = "/";
+  };
+
   return (
     <div className="container">
       <h2>Register</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label for="exampleInputEmail1">Name</label>
+          <label>Name</label>
           <input
             type="text"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            name="name"
+            onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+          <label>Email address</label>
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            name="email"
+            onChange={handleChange}
           />
-          <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small>
         </div>
         <div className="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label>Password</label>
           <input
             type="password"
             className="form-control"
-            id="exampleInputPassword1"
+            name="password"
+            onChange={handleChange}
           />
-        </div>
-        <div className="form-group form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          />
-          <label className="form-check-label" for="exampleCheck1">
-            Check me out
-          </label>
         </div>
         <button type="submit" className="btn btn-primary">
           Submit

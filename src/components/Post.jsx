@@ -5,18 +5,20 @@ const Post = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    async function getPost() {
+    async function fetchPost() {
       const result = await getPosts();
       setPosts(result.data);
     }
-    getPost();
+    fetchPost();
   }, []);
 
   return (
     <div className="container">
       <ul className="list-group">
         {posts.map((post) => (
-          <li className="list-group-item" key={post.id}>{post.name}</li>
+          <li className="list-group-item" key={post._id}>
+            {post.name}
+          </li>
         ))}
       </ul>
     </div>

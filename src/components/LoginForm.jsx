@@ -1,38 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import auth from "../services/authService";
 
-export default function LoginForm() {
+const LoginForm = () => {
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await auth.login(data.email, data.password);
+    window.location = "/";
+  };
+
   return (
     <div className="container">
       <h2>Login Form</h2>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Email address</label>
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            name="email"
+            onChange={handleChange}
           />
-          <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small>
         </div>
         <div className="form-group">
           <label>Password</label>
           <input
             type="password"
             className="form-control"
-            id="exampleInputPassword1"
+            name="password"
+            onChange={handleChange}
           />
-        </div>
-        <div className="form-group form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          />
-          <label className="form-check-label">Check me out</label>
         </div>
         <button type="submit" className="btn btn-primary">
           Submit
@@ -40,4 +49,6 @@ export default function LoginForm() {
       </form>
     </div>
   );
-}
+};
+
+export default LoginForm;
