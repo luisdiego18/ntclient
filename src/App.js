@@ -30,10 +30,11 @@ const App = () => {
           <Route path="/login" component={LoginForm} />
           <Route path="/logout" component={Logout} />
           <Route path="/register" component={RegisterForm} />
+          <Route path="/jobs/:id" component={JobForm} />
           <Route path="/jobs" component={Jobs} />
           <Route path="/job-form" component={JobForm} />
           <Route path="/not-found" component={NotFound} />
-          <Redirect from="/" exact to="/posts" />
+          <Redirect from="/" exact to="/jobs" />
           <Redirect to="/not-found" />
         </Switch>
       </main>

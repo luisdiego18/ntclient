@@ -6,7 +6,7 @@ const Navbar = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/">
-        Navbar
+        Logo
       </Link>
       <button
         className="navbar-toggler"
@@ -21,21 +21,20 @@ const Navbar = (props) => {
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <div className="navbar-nav">
-          <NavLink className="nav-item nav-link" to="/posts">
-            Posts
-          </NavLink>
-
-          <NavLink className="nav-item nav-link" to="/register">
-            Register
-          </NavLink>
           <NavLink className="nav-item nav-link" to="/jobs">
             Jobs
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/posts">
+            Posts
           </NavLink>
           <NavLink className="nav-item nav-link" to="/job-form">
             New Job
           </NavLink>
           {!user && (
             <React.Fragment>
+              <NavLink className="nav-item nav-link" to="/register">
+                Register
+              </NavLink>
               <NavLink className="nav-item nav-link" to="/login">
                 Login
               </NavLink>

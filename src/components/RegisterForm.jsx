@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { addUser } from "../services/userServices";
 import auth from "../services/authService";
 
-const RegisterForm = ({ history }) => {
+const RegisterForm = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -24,40 +24,42 @@ const RegisterForm = ({ history }) => {
   };
 
   return (
-    <div className="container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Name</label>
-          <input
-            type="text"
-            className="form-control"
-            name="name"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            name="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            className="form-control"
-            name="password"
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+    <div className="card">
+      <div className="card-body">
+        <h2 className="card-title">Register </h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Name</label>
+            <input
+              type="text"
+              className="form-control"
+              name="name"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Email address</label>
+            <input
+              type="email"
+              className="form-control"
+              name="email"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              className="form-control"
+              name="password"
+              onChange={handleChange}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

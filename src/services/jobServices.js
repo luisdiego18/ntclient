@@ -28,6 +28,18 @@ export function updateJob(job) {
   });
 }
 
+export function saveJob(job) {
+  if (job._id) {
+    const body = { ...job };
+    delete body._id;
+    return http.put(jobUrl(job._id), {
+      title: body.title,
+      description: body.description,
+    });
+  }
+  return http.post(apiEndPoint, job);
+}
+
 export function deleteJob(jobId) {
   return http.delete(jobUrl(jobId));
 }

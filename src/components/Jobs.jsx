@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { getJobs, deleteJob, updateJob } from "../services/jobServices";
+import Pagination from "./common/Pagination";
+import { paginate } from "../utils/paginate";
+import { NavLink, Link } from "react-router-dom";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
+  const [pages, setPages] = useState({
+    currentPage: 1,
+    pageSize: 2,
+  });
 
   useEffect(() => {
     async function fecthJobs() {
@@ -46,9 +53,22 @@ const Jobs = () => {
     }
   };
 
+  //Pagination
+  const handlePageChange = (page) => {
+    console.log(pages.currentPage);
+    pages.currentPage = page;
+    console.log(page);
+    // setPages(pages.currentPage);
+  };
+
   return (
     <div>
-      <h2>Jobs</h2>
+      <h2>Total Jobs: {jobs.length}</h2>
+      <NavLink className="nav-item nav-link" to="/job-form">
+        <button type="button" className="btn btn-primary float-right mb-2">
+          New Job
+        </button>
+      </NavLink>
       <table className="table">
         <thead>
           <tr>
@@ -60,7 +80,9 @@ const Jobs = () => {
         <tbody>
           {jobs.map((job) => (
             <tr key={job._id}>
-              <td>{job.title}</td>
+              <td>
+                <Link to={`/jobs/${job._id}`}>{job.title}</Link>
+              </td>
               <td>{job.description}</td>
               <td>
                 <button
@@ -70,18 +92,17 @@ const Jobs = () => {
                 >
                   Delete
                 </button>
-                <button
-                  type="button"
-                  className="btn btn-warning ml-2"
-                  onClick={() => handleUpdate(job)}
-                >
-                  Update
-                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <Pagination
+        itemsCount={jobs.length}
+        pageSize={pages.pageSize}
+        currentPage={pages.currentPage}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
