@@ -7,7 +7,7 @@ import LoginForm from "./components/LoginForm";
 import Logout from "./components/Logout";
 import Navbar from "./components/Navbar";
 import NotFound from "./components/NotFound";
-import Post from "./components/Post";
+import Company from "./components/Company";
 import RegisterForm from "./components/RegisterForm";
 import auth from "./services/authService";
 import "react-toastify/dist/ReactToastify.css";
@@ -26,7 +26,7 @@ const App = () => {
       <main className="container">
         <ToastContainer />
         <Switch>
-          <Route path="/posts" component={Post} />
+          <Route path="/companies" component={Company} />
           <Route path="/login" component={LoginForm} />
           <Route path="/logout" component={Logout} />
           <Route path="/register" component={RegisterForm} />

@@ -24,8 +24,8 @@ const Navbar = (props) => {
           <NavLink className="nav-item nav-link" to="/jobs">
             Jobs
           </NavLink>
-          <NavLink className="nav-item nav-link" to="/posts">
-            Posts
+          <NavLink className="nav-item nav-link" to="/companies">
+            Companies
           </NavLink>
           <NavLink className="nav-item nav-link" to="/job-form">
             New Job

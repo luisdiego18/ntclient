@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { addJob, getJob, updateJob, saveJob } from "../services/jobServices";
+import { getJob, saveJob } from "../services/jobServices";
 
 const JobForm = ({ match }) => {
   const [job, setJob] = useState({
