@@ -19,15 +19,6 @@ export function addJob(job) {
   return http.post(apiEndPoint, job);
 }
 
-export function updateJob(job) {
-  const body = { ...job };
-  delete body._id;
-  return http.put(jobUrl(job._id), {
-    title: body.title,
-    description: body.description,
-  });
-}
-
 export function saveJob(job) {
   if (job._id) {
     const body = { ...job };
@@ -35,6 +26,7 @@ export function saveJob(job) {
     return http.put(jobUrl(job._id), {
       title: body.title,
       description: body.description,
+      salary: body.salary,
     });
   }
   return http.post(apiEndPoint, job);

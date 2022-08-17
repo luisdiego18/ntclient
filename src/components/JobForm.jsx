@@ -5,6 +5,8 @@ const JobForm = ({ match }) => {
   const [job, setJob] = useState({
     title: "",
     description: "",
+    salary: "",
+    company: [],
   });
 
   const handleChange = (e) => {
@@ -36,7 +38,7 @@ const JobForm = ({ match }) => {
   return (
     <div className="card">
       <div className="card-body">
-        <h2 className="card-title">Job Form - {match.params.id}</h2>
+        <h2 className="card-title">Job Form</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Title</label>
@@ -49,12 +51,32 @@ const JobForm = ({ match }) => {
             />
           </div>
           <div className="form-group">
+            <label>Company</label>
+            <input
+              type="text"
+              className="form-control"
+              value={job.company.name}
+              name="company"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
             <label>Description</label>
             <input
               type="text"
               className="form-control"
               value={job.description}
               name="description"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Salary</label>
+            <input
+              type="text"
+              className="form-control"
+              value={job.salary}
+              name="salary"
               onChange={handleChange}
             />
           </div>

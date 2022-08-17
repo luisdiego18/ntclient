@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getJobs, deleteJob, updateJob } from "../services/jobServices";
+import { getJobs, deleteJob } from "../services/jobServices";
 import Pagination from "./common/Pagination";
 import { paginate } from "../utils/paginate";
 import { NavLink, Link } from "react-router-dom";
@@ -18,22 +18,6 @@ const Jobs = () => {
     }
     fecthJobs();
   }, []);
-
-  // Update
-  const handleUpdate = async (job) => {
-    job.title = "Workss";
-    job.description = "Workss";
-    console.log(job);
-    await updateJob(job, {
-      title: job.title,
-      description: job.description,
-    });
-
-    const currentJobs = [...jobs];
-    const index = currentJobs.indexOf[job];
-    currentJobs[index] = { ...currentJobs };
-    setJobs(currentJobs);
-  };
 
   // Delete
   const handleDelete = async (job) => {
